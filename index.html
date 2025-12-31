@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mithila Coaching - Complete Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* COMPLETE CSS FROM ALL FILES (CONDENSED VERSION) */
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #ff6b6b;
+            --accent: #4ecdc4;
+            --dark: #2d3436;
+            --light: #f9f9f9;
+            --text: #333333;
+            --text-light: #777777;
+            --card-bg: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --border-radius: 10px;
+            --nav-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+            height: var(--nav-height);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            white-space: nowrap;
+            z-index: 1002;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1002;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        /* UPDATED HERO SECTION - IMPROVED DESIGN */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--nav-height);
+            background: linear-gradient(135deg, rgba(44, 90, 160, 0.9) 0%, rgba(78, 205, 196, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .achievement-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .achievement-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem 1.5rem;
+            border-radius: var(--border-radius);
+            min-width: 200px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-15px);
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-card .number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            display: block;
+            margin-bottom: 0.8rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievement-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Floating shapes for hero background */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 70%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* STUDENTS SECTION */
+        .student-scroll-container {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            margin-bottom: 2rem;
+        }
+
+        .student-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .student-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .student-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+
+        .student-card:hover .student-avatar {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .student-name {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .student-class {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .student-marks {
+            background: rgba(44, 90, 160, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        /* UPDATED TIMETABLE SECTION - ONLY 2 TIME SLOTS */
+        .timetable-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(44, 90, 160, 0.1);
+        }
+
+        .day-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-name i {
+            color: var(--secondary);
+        }
+
+        .day-date {
+            color: var(--text-light);
+            font-size: 1rem;
+            background-color: rgba(44, 90, 160, 0.1);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .timetable-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .time-slot {
+            background: linear-gradient(135deg, rgba(44, 90, 160, 0.05), rgba(78, 205, 196, 0.05));
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-slot:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--secondary);
+        }
+
+        .time-slot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .time-slot:hover::before {
+            opacity: 0.03;
+        }
+
+        .time-slot > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slot-time {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .slot-time i {
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+
+        .slot-classes {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .slot-subjects {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .timetable-note {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 107, 107, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .timetable-note i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        /* NEW CLASS NOTES SECTION */
+        .notes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .note-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .note-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .note-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .note-card:hover .note-icon {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .note-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .note-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .note-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .note-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(44, 90, 160, 0.1);
+            border-radius: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .note-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .note-link i {
+            font-size: 1.1rem;
+        }
+
+        .note-subject-list {
+            text-align: left;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .note-subject-list h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .note-subject-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .note-subject-list li {
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .note-subject-list i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CLASSES SECTION */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .class-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .class-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .class-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .class-card:hover .class-icon {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* FEE STRUCTURE */
+        .fees-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .fee-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .fee-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .fee-card.popular {
+            border: 2px solid var(--secondary);
+            transform: scale(1.02);
+        }
+
+        .fee-card.popular:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: linear-gradient(90deg, var(--secondary), #ff8e8e);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .fee-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .fee-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .fee-price {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .period {
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* CONTACT SECTION */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ADMISSION FORM */
+        .contact-form-container {
+            background-color: var(--light);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            background-color: var(--card-bg);
+            color: var(--text);
+            font-family: inherit;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--nav-height));
+                background-color: var(--card-bg);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 1rem 0;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .class-grid,
+            .fees-container,
+            .notes-container,
+            .timetable-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+
+            .achievement-card {
+                min-width: 150px;
+                padding: 2rem 1rem;
+            }
+
+            .achievement-card .number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .achievement-cards {
+                gap: 1.5rem;
+            }
+
+            .day-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .time-slot {
+                padding: 1.5rem;
+            }
+        }
+
+        /* UTILITY CLASSES */
+        .hidden {
+            display: none !important;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* SPLASH SCREEN */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .splash-logo {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .splash-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* SCROLL CONTROLS */
+        .scroll-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .scroll-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">Mithila Coaching Center Doghra</div>
+        <div class="splash-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Mithila Coaching
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#students" class="nav-link" data-page="students">Students</a></li>
+                <li><a href="#timetable" class="nav-link" data-page="timetable">Timetable</a></li>
+                <li><a href="#notes" class="nav-link" data-page="notes">Class Notes</a></li>
+                <li><a href="#classes" class="nav-link" data-page="classes">Classes</a></li>
+                <li><a href="#fees" class="nav-link" data-page="fees">Fees</a></li>
+                <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                <li><a href="#admission" class="nav-link" data-page="admission">Admission</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="mainContent">
+        <!-- HOME PAGE - UPDATED DESIGN -->
+        <section id="home" class="page active">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            
+            <div class="container hero-content">
+                <h1>शिक्षा की ओर, सफलता की यात्रा</h1>
+                <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; color: white; opacity: 0.9;">Education Towards Success Journey</h2>
+                <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; color: white; opacity: 0.9;">New Batch Start 2026</h2>
+                <p>Experience personalized coaching designed to unlock your academic potential and achieve excellence in competitive exams</p>
+                
+                <div class="cta-buttons">
+                    <a href="#admission" class="btn btn-primary" data-page="admission" style="padding: 15px 35px; font-size: 1.1rem;">
+                        <i class="fas fa-user-graduate"></i> Enroll Now
+                    </a>
+                    <a href="#notes" class="btn btn-secondary" data-page="notes" style="padding: 15px 35px; font-size: 1.1rem; border-color: white; color: white;">
+                        <i class="fas fa-book"></i> Download Notes
+                    </a>
+                </div>
+                
+                <div class="achievement-cards">
+                    <div class="achievement-card">
+                        <span class="number">50+</span>
+                        <p>Successful Students</p>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="number">90%</span>
+                        <p>Success Rate</p>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="number">1</span>
+                        <p>Expert Teacher</p>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="number">3+</span>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDENTS PAGE -->
+        <section id="students" class="page section hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Top Performers</h2>
+                    <p class="section-subtitle">Meet our brilliant students who have excelled in their academic journey with our guidance</p>
+                </div>
+                
+                <div class="students-container">
+                    <div class="student-scroll-container" id="studentScroll">
+                        <!-- Student cards will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="scroll-controls">
+                        <button class="scroll-btn" id="scrollLeft">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="scroll-btn" id="scrollRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UPDATED TIMETABLE PAGE - ONLY 2 TIME SLOTS -->
+        <section id="timetable" class="page section hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Class Schedule</h2>
+                    <p class="section-subtitle">Regular timetable for all classes (Monday to Saturday)</p>
+                </div>
+                
+                <div class="timetable-card">
+                    <div class="day-header">
+                        <h2 class="day-name">
+                            <i class="fas fa-calendar-alt"></i>
+                            Regular Schedule
+                        </h2>
+                        <div class="day-date">Monday to Saturday</div>
+                    </div>
+                    
+                    <div class="timetable-grid">
+                        <!-- Morning Batch 6-8 AM -->
+                        <div class="time-slot">
+                            <div class="slot-time">
+                                <i class="fas fa-sun"></i>
+                                <span>6:00 AM - 8:00 AM</span>
+                            </div>
+                            <div class="slot-classes">All Classes</div>
+                            <div class="slot-subjects">
+                                • Mathematics & Science for Class 6-10<br>
+                                • Physics/Chemistry/Mathematics for Class 11-12<br>
+                                • Regular Classes and Concept Building
+                            </div>
+                        </div>
+                        
+                        <!-- Evening Batch 5-8 PM -->
+                        <div class="time-slot">
+                            <div class="slot-time">
+                                <i class="fas fa-moon"></i>
+                                <span>5:00 PM - 8:00 PM</span>
+                            </div>
+                            <div class="slot-classes">All Classes</div>
+                            <div class="slot-subjects">
+                                • 1-8 All Subject<br>
+                                • 9-10 All Subject<br>
+                                • Test Preparation<br>
+                                • Special Focus on Weak Areas
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timetable-note">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Note:</strong> Sunday is a holiday. All students from Class 6 to 12 can attend both sessions. 
+                            Special attention is given to board exam preparation during evening sessions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW CLASS NOTES SECTION -->
+        <section id="notes" class="page section hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Class Notes & Test Papers</h2>
+                    <p class="section-subtitle">Download study material, notes and test papers for Class 6-12</p>
+                </div>
+                
+                <div class="notes-container">
+                    <!-- Class 6-8 Notes -->
+                    <div class="note-card">
+                        <div class="note-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="note-title">Class 6-8 Notes</h3>
+                        <p class="note-description">Complete study material for Middle School classes including all subjects</p>
+                        
+                        <div class="note-links">
+                            <a href="https://drive.google.com/drive/folders/1EXAMPLE_FOLDER_1" target="_blank" class="note-link">
+                                <i class="fas fa-file-pdf"></i>
+                                Download Notes (PDF)
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/2EXAMPLE_FOLDER_2" target="_blank" class="note-link">
+                                <i class="fas fa-clipboard-list"></i>
+                                Test Papers & Worksheets
+                            </a>
+                        </div>
+                        
+                        <div class="note-subject-list">
+                            <h4>Subjects Covered:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Mathematics</li>
+                                <li><i class="fas fa-check"></i> Science</li>
+                                <li><i class="fas fa-check"></i> English</li>
+                                <li><i class="fas fa-check"></i> Hindi/Urdu</li>
+                                <li><i class="fas fa-check"></i> Social Studies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Class 9-10 Notes -->
+                    <div class="note-card">
+                        <div class="note-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="note-title">Class 9-10 Notes</h3>
+                        <p class="note-description">Board exam preparation material with solved papers and important questions</p>
+                        
+                        <div class="note-links">
+                            <a href="https://drive.google.com/drive/folders/3EXAMPLE_FOLDER_3" target="_blank" class="note-link">
+                                <i class="fas fa-file-pdf"></i>
+                                Download Notes (PDF)
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/4EXAMPLE_FOLDER_4" target="_blank" class="note-link">
+                                <i class="fas fa-clipboard-list"></i>
+                                Previous Year Papers
+                            </a>
+                        </div>
+                        
+                        <div class="note-subject-list">
+                            <h4>Subjects Covered:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Mathematics</li>
+                                <li><i class="fas fa-check"></i> Science (Phy, Chem, Bio)</li>
+                                <li><i class="fas fa-check"></i> English</li>
+                                <li><i class="fas fa-check"></i> Hindi/Urdu</li>
+                                <li><i class="fas fa-check"></i> Social Science</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Class 11-12 Notes -->
+                    <div class="note-card">
+                        <div class="note-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3 class="note-title">Class 11-12 Notes</h3>
+                        <p class="note-description">Advanced study material for Higher Secondary with competitive exam preparation</p>
+                        
+                        <div class="note-links">
+                            <a href="https://drive.google.com/drive/folders/5EXAMPLE_FOLDER_5" target="_blank" class="note-link">
+                                <i class="fas fa-file-pdf"></i>
+                                Download Notes (PDF)
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/6EXAMPLE_FOLDER_6" target="_blank" class="note-link">
+                                <i class="fas fa-clipboard-list"></i>
+                                Test Series & Mock Papers
+                            </a>
+                        </div>
+                        
+                        <div class="note-subject-list">
+                            <h4>Streams Covered:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Science (PCM/PCB)</li>
+                                <li><i class="fas fa-check"></i> Commerce</li>
+                                <li><i class="fas fa-check"></i> Arts</li>
+                                <li><i class="fas fa-check"></i> JEE/NEET Foundation</li>
+                                <li><i class="fas fa-check"></i> Board Exam Special</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Papers Section -->
+                    <div class="note-card">
+                        <div class="note-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="note-title">Test Papers & Solutions</h3>
+                        <p class="note-description">Weekly test papers with solutions for practice and self-assessment</p>
+                        
+                        <div class="note-links">
+                            <a href="https://drive.google.com/drive/folders/7EXAMPLE_FOLDER_7" target="_blank" class="note-link">
+                                <i class="fas fa-file-contract"></i>
+                                Weekly Test Papers
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/8EXAMPLE_FOLDER_8" target="_blank" class="note-link">
+                                <i class="fas fa-file-signature"></i>
+                                Solutions & Answer Keys
+                            </a>
+                        </div>
+                        
+                        <div class="note-subject-list">
+                            <h4>Available Test Papers:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Monthly Tests</li>
+                                <li><i class="fas fa-check"></i> Half-Yearly Papers</li>
+                                <li><i class="fas fa-check"></i> Final Exam Papers</li>
+                                <li><i class="fas fa-check"></i> Model Test Papers</li>
+                                <li><i class="fas fa-check"></i> Revision Papers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timetable-note" style="margin-top: 3rem;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>
+                        <strong>Important:</strong> All notes and test papers are regularly updated. 
+                        For access issues or specific requests, please contact the teacher directly. 
+                        New material is added every week.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLASSES PAGE -->
+        <section id="classes" class="page section hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Programs</h2>
+                    <p class="section-subtitle">Comprehensive courses designed for academic excellence at every level</p>
+                </div>
+                
+                <div class="class-grid" id="classGrid">
+                    <!-- Class cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FEES PAGE -->
+        <section id="fees" class="page section hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Fee Structure</h2>
+                    <p class="section-subtitle">Affordable education plans tailored for every student's needs</p>
+                </div>
+                
+                <div class="fees-container" id="feesContainer">
+                    <!-- Fee cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page section hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p class="section-subtitle">Get in touch with us for queries or enrollment information</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="contact-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Our Location</h3>
+                                <p>Doghra Bajar Street, Munna Tent House</p>
+                                <p>Darbhanga, Bihar - 847302</p>
+                                <a href="https://maps.google.com?q=Doghra+Bazar+Road,+Darbhanga,+Bihar" target="_blank" class="contact-link" style="color: var(--secondary); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 10px;">
+                                    <i class="fas fa-map-marked-alt"></i> View on Map
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0;">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone Numbers</h3>
+                                <p>+91 9334797386</p>
+                                <p>+91 9508043624</p>
+                                <a href="tel:+919334797386" class="contact-link" style="color: var(--secondary); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 10px;">
+                                    <i class="fas fa-phone"></i> Call Now
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email & WhatsApp</h3>
+                                <p>mdtamim20047@gmail.com</p>
+                                <p>WhatsApp: +91 9334797386</p>
+                                <a href="https://wa.me/919334797386" target="_blank" class="contact-link" style="color: var(--secondary); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 10px;">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <h3 class="form-title" style="margin-bottom: 2rem; color: var(--primary); text-align: center; font-size: 1.8rem;">Send us a Message</h3>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name" style="color: var(--text); font-weight: 500;">Full Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" style="color: var(--text); font-weight: 500;">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" style="color: var(--text); font-weight: 500;">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" style="color: var(--text); font-weight: 500;">Message</label>
+                                <textarea id="message" class="form-control" placeholder="Enter your message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMISSION PAGE -->
+        <section id="admission" class="page section hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Admission Form</h2>
+                    <p class="section-subtitle">Fill this form to enroll in our coaching center</p>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="admissionForm">
+                        <div class="form-group">
+                            <label for="studentName" style="color: var(--text); font-weight: 500;">Student Name</label>
+                            <input type="text" id="studentName" class="form-control" placeholder="Enter student name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="parentName" style="color: var(--text); font-weight: 500;">Parent/Guardian Name</label>
+                            <input type="text" id="parentName" class="form-control" placeholder="Enter parent/guardian name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" style="color: var(--text); font-weight: 500;">Phone Number</label>
+                            <input type="tel" id="admissionPhone" class="form-control" placeholder="Enter phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" style="color: var(--text); font-weight: 500;">Email Address</label>
+                                <input type="email" id="admissionEmail" class="form-control" placeholder="Enter email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="class" style="color: var(--text); font-weight: 500;">Class</label>
+                            <select id="class" class="form-control" required>
+                                <option value="">Select Class</option>
+                                <option value="6-8">Class 6-8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                                <option value="11-12">Class 11-12</option>
+                                <option value="B.A">Class B.A</option>
+                                <option value="M.A">Class M.A</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address" style="color: var(--text); font-weight: 500;">Address</label>
+                            <textarea id="address" class="form-control" placeholder="Enter full address" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about" style="grid-column: span 2;">
+                    <div class="footer-logo" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-graduation-cap"></i>
+                        Mithila Coaching
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 1.5rem;">Providing quality education and personalized coaching for over 3 years. Our mission is to help students achieve academic excellence and build a bright future.</p>
+                    <div class="footer-social" style="display: flex; gap: 1rem;">
+                        <a href="#" style="width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: var(--transition);"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: var(--transition);"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: var(--transition);"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: var(--transition);"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h3 class="footer-heading" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; color: white; position: relative; display: inline-block; padding-bottom: 8px;">
+                        Quick Links
+                        <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background-color: var(--secondary);"></span>
+                    </h3>
+                    <ul class="footer-links" style="list-style: none;">
+                        <li style="margin-bottom: 0.8rem;"><a href="#home" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem;" data-page="home"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--secondary);"></i> Home</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#students" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem;" data-page="students"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--secondary);"></i> Students</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#timetable" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem;" data-page="timetable"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--secondary);"></i> Timetable</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#notes" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem;" data-page="notes"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--secondary);"></i> Class Notes</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#classes" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem;" data-page="classes"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--secondary);"></i> Classes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; color: white; position: relative; display: inline-block; padding-bottom: 8px;">
+                        Contact Info
+                        <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background-color: var(--secondary);"></span>
+                    </h3>
+                    <ul class="footer-contact" style="list-style: none;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.8rem;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-top: 0.2rem; flex-shrink: 0;"></i>
+                            <span style="color: rgba(255, 255, 255, 0.7);">Doghra Bajar, Munna Tent House<br>Darbhanga, Bihar 846004</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.8rem;">
+                            <i class="fas fa-phone-alt" style="color: var(--secondary); margin-top: 0.2rem; flex-shrink: 0;"></i>
+                            <span style="color: rgba(255, 255, 255, 0.7);">+91 9334797386</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.8rem;">
+                            <i class="fas fa-envelope" style="color: var(--secondary); margin-top: 0.2rem; flex-shrink: 0;"></i>
+                            <span style="color: rgba(255, 255, 255, 0.7);">mdtamim20047@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div class="footer-copyright" style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+                    &copy; 2025 Mithila Coaching. All Rights Reserved.
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+                    Class Timings: 6:00 AM - 8:00 AM & 5:00 PM - 8:00 PM (Mon-Sat)
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop" style="position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3); transition: var(--transition); opacity: 0; visibility: hidden; z-index: 100;">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // DOM Elements
+        const splashScreen = document.getElementById('splashScreen');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        const backToTop = document.getElementById('backToTop');
+        const contactForm = document.getElementById('contactForm');
+        const admissionForm = document.getElementById('admissionForm');
+        const pages = document.querySelectorAll('.page');
+        const navItems = document.querySelectorAll('.nav-link');
+
+        // Hide splash screen after 2 seconds
+        setTimeout(() => {
+            splashScreen.style.opacity = '0';
+            splashScreen.style.visibility = 'hidden';
+            document.body.style.overflow = 'auto';
+        }, 2000);
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+                activePage.classList.remove('hidden');
+            }
+            
+            // Update active nav link
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-page') === pageId) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Handle nav link clicks
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = item.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Contact Form Submission
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                alert(`Thank you, ${name}! Your message has been sent. We will contact you at ${email} soon.`);
+                contactForm.reset();
+            });
+        }
+
+        // Admission Form Submission
+        if (admissionForm) {
+            admissionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const studentName = document.getElementById('studentName').value;
+                const phone = document.getElementById('admissionPhone').value;
+                const className = document.getElementById('class').value;
+                
+                // WhatsApp message
+                const whatsappMessage = `*नया प्रवेश आवेदन - Mithila Coaching*%0A%0A` +
+                    `*छात्र का नाम:* ${studentName}%0A` +
+                    `*अभिभावक का नाम:* ${document.getElementById('parentName').value}%0A` +
+                    `*फोन नंबर:* ${phone}%0A` +
+                    `*ईमेल:* ${document.getElementById('admissionEmail').value || 'नहीं दिया गया'}%0A` +
+                    `*कक्षा:* ${className}%0A` +
+                    `*पता:* ${document.getElementById('address').value}%0A%0A` +
+                    `कृपया इस आवेदक को प्रवेश प्रक्रिया के लिए संपर्क करें।`;
+                
+                // Open WhatsApp
+                window.open(`https://wa.me/919334797386?text=${whatsappMessage}`, '_blank');
+                
+                alert(`धन्यवाद, ${studentName}! आपका आवेदन प्राप्त हो गया है। हम जल्द ही ${phone} पर संपर्क करेंगे।`);
+                admissionForm.reset();
+            });
+        }
+
+        // Students Data
+        const studentsData = [
+            { name: "Sabreen", class: "Class 12", initial: "S", marks: "349/500" },
+            { name: "Sahemen", class: "Class 12", initial: "S", marks: "392/500" },
+            { name: "Jubaida Khatoon", class: "Class 12", initial: "J", marks: "300/500" },
+            { name: "Radhika Kumari", class: "Class 12", initial: "R", marks: "392/500" },
+            { name: "Mahenaz Khanam", class: "Class 12", initial: "M", marks: "377/500" },
+            { name: "Shahida Khatoon", class: "Class 12", initial: "S", marks: "416/500" },
+            { name: "Asiya Naeem", class: "Class 12", initial: "A", marks: "400/500" },
+            { name: "Sabiha Fatma", class: "Class 12", initial: "S", marks: "417/500" },
+            { name: "Sagufta Naz", class: "Class 12", initial: "S", marks: "375/500" },
+            { name: "Rahmati Khatoon", class: "Class 12", initial: "R", marks: "384/500" },
+            { name: "Happy Kumar", class: "Class 12", initial: "H", marks: "381/500" },
+            { name: "Priyank Kumar", class: "Class 12", initial: "P", marks: "421/500" },
+            { name: "Rokhsar Prween", class: "Class 10", initial: "R", marks: "316/500" },
+            { name: "Rishika Kumari", class: "Class 10", initial: "R", marks: "360/500" },
+            { name: "Sujata Kumari", class: "Class 10", initial: "S", marks: "404/500" },
+            { name: "Zainab Khatoon", class: "Class 10", initial: "Z", marks: "417/500" },
+        ];
+
+        // Populate student cards
+        const studentScroll = document.getElementById('studentScroll');
+        if (studentScroll) {
+            studentsData.forEach(student => {
+                const studentCard = document.createElement('div');
+                studentCard.className = 'student-card';
+                studentCard.innerHTML = `
+                    <div class="student-avatar">${student.initial}</div>
+                    <h3 class="student-name">${student.name}</h3>
+                    <p class="student-class">${student.class}</p>
+                    <div class="student-marks">${student.marks}</div>
+                `;
+                studentScroll.appendChild(studentCard);
+            });
+        }
+
+        // Scroll functionality for students
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+        
+        if (scrollLeftBtn && scrollRightBtn && studentScroll) {
+            scrollLeftBtn.addEventListener('click', () => {
+                studentScroll.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                studentScroll.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+        }
+
+        // Classes Data
+        const classesData = [
+            {
+                title: "Class 6-8",
+                icon: "fas fa-book-open",
+                features: ["Mathematics", "Science", "English", "Social Studies", "Regular Tests"],
+                fee: "₹200/month",
+                description: "Middle school foundation building"
+            },
+            {
+                title: "Class 9-10",
+                icon: "fas fa-graduation-cap",
+                features: ["Board Exam Preparation", "All Subjects", "Mock Tests", "Doubt Clearing", "Study Material"],
+                fee: "₹250-400/month",
+                description: "Secondary board exam focus"
+            },
+            {
+                title: "Class 11-12",
+                icon: "fas fa-university",
+                features: ["Science/Commerce/Arts", "JEE/NEET Foundation", "Practical Sessions", "Test Series", "Career Guidance"],
+                fee: "₹500/month",
+                description: "Higher secondary & competitive prep"
+            },
+            {
+title: "B.A",
+icon: "fas fa-university",
+features: ["Arts", "History", "Political Science", "Geography", "Sociology", "Psychology", "Urdu"],
+fee: "₹500/month",
+description: "Undergraduate Arts program. Builds foundation for higher studies and competitive exams."
+},
+{
+title: "M.A",
+icon: "fas fa-university",
+features: ["Advanced Arts", "History", "Political Science", "Geography", "Sociology", "Psychology", "Urdu"],
+fee: "₹700/month",
+description: "Postgraduate Arts program. Specialized study for advanced careers and research."
+},
+{
+title: "Entrance Exams",
+icon: "fas fa-door-open",
+features: ["DLED Entrance", "B.Ed Entrance", "Diploma Courses", "MANUU", "AMU", "JAMIA"],
+fee: "₹600/month",
+description: "Targeted preparation for entrance exams of top universities and diploma programs including MANUU, AMU, and Jamia Millia Islamia."
+}
+        ];
+
+        // Populate class cards
+        const classGrid = document.getElementById('classGrid');
+        if (classGrid) {
+            classesData.forEach(cls => {
+                const classCard = document.createElement('div');
+                classCard.className = 'class-card';
+                classCard.innerHTML = `
+                    <div class="class-header">
+                        <div class="class-icon">
+                            <i class="${cls.icon}"></i>
+                        </div>
+                        <h3>${cls.title}</h3>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">${cls.description}</p>
+                    </div>
+                    <ul class="class-features" style="list-style: none; margin: 1.5rem 0;">
+                        ${cls.features.map(feature => `
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; color: var(--text);">
+                                <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.8rem; font-size: 1.1rem; margin-top: 2px;"></i>
+                                ${feature}
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">${cls.fee}</span>
+                    </div>
+                    <a href="#admission" class="btn btn-primary" style="display: block; width: 100%; margin-top: 1.5rem; text-align: center;" data-page="admission">
+                        <i class="fas fa-user-plus"></i> Enroll Now
+                    </a>
+                `;
+                classGrid.appendChild(classCard);
+            });
+        }
+
+        // Fees Data
+        const feesData = [
+            { 
+                title: "Class 6-8", 
+                grade: "Middle School", 
+                fee: "₹200/month", 
+                popular: false,
+                features: ["All Subjects", "Weekly Tests", "Study Material", "Regular Assessment"]
+            },
+            { 
+                title: "Class 9", 
+                grade: "Secondary", 
+                fee: "₹250/month", 
+                popular: true,
+                features: ["Board Prep", "Complete Notes", "Weekly Tests", "Performance Tracking"]
+            },
+            { 
+                title: "Class 10", 
+                grade: "Secondary", 
+                fee: "₹400/month", 
+                popular: true,
+                features: ["Board Exam Focus", "Mock Tests", "Study Material", "Doubt Sessions"]
+            },
+            { 
+                title: "Class 11-12", 
+                grade: "Higher Secondary", 
+                fee: "₹500/month", 
+                popular: false,
+                features: ["Science/Commerce/Arts", "Competitive Prep", "Test Series", "Career Counseling"]
+            },
+        ];
+
+        // Populate fee cards
+        const feesContainer = document.getElementById('feesContainer');
+        if (feesContainer) {
+            feesData.forEach(fee => {
+                const feeCard = document.createElement('div');
+                feeCard.className = `fee-card ${fee.popular ? 'popular' : ''}`;
+                feeCard.innerHTML = `
+                    ${fee.popular ? '<div class="popular-tag">Most Popular</div>' : ''}
+                    <div class="fee-header">
+                        <div class="fee-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <h3>${fee.title}</h3>
+                        <p class="grade" style="color: var(--text-light); margin-top: 0.5rem;">${fee.grade}</p>
+                    </div>
+                    <div class="fee-price">
+                        <span class="amount">${fee.fee.split('/')[0]}</span>
+                        <span class="period">/${fee.fee.split('/')[1]}</span>
+                    </div>
+                    <div class="fee-features" style="margin: 1.5rem 0;">
+                        <ul style="list-style: none;">
+                            ${fee.features.map(feature => `
+                                <li style="margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                    <i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 0.5rem; font-size: 0.9rem;"></i>
+                                    <span style="font-size: 0.9rem;">${feature}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    <a href="#admission" class="btn btn-primary" style="display: block; width: 100%; text-align: center;" data-page="admission">
+                        <i class="fas fa-user-graduate"></i> Enroll Now
+                    </a>
+                `;
+                feesContainer.appendChild(feeCard);
+            });
+        }
+
+        // Handle hash changes for direct page access
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showPage(hash);
+            }
+        });
+
+        // Initial page load
+        const initialHash = window.location.hash.substring(1) || 'home';
+        showPage(initialHash);
+    </script>
+</body>
+</html>
