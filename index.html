@@ -31,6 +31,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height); /* ADDED FOR NAVBAR OFFSET */
         }
 
         body {
@@ -58,11 +59,13 @@
 
         .section {
             padding: 5rem 0;
+            scroll-margin-top: calc(var(--nav-height) + 20px); /* FIX FOR NAVBAR OVERLAP */
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
+            padding-top: 0.5rem; /* ADDED PADDING */
         }
 
         .section-title h2 {
@@ -234,7 +237,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: var(--nav-height);
+            padding-top: calc(var(--nav-height) + 20px); /* INCREASED PADDING */
             background: linear-gradient(135deg, rgba(44, 90, 160, 0.9) 0%, rgba(78, 205, 196, 0.8) 100%), 
                         url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -1036,6 +1039,26 @@
                 padding: 0 10px;
             }
 
+            /* FIX FOR NAVBAR OVERLAP IN MOBILE */
+            .section {
+                padding: 4rem 0 3rem;
+                scroll-margin-top: calc(var(--nav-height) + 30px); /* INCREASED FOR MOBILE */
+            }
+            
+            .section-title {
+                margin-bottom: 2.5rem;
+                padding-top: 1rem; /* ADDED EXTRA PADDING */
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+                padding-top: 0.5rem;
+            }
+            
+            #home {
+                padding-top: calc(var(--nav-height) + 30px); /* EXTRA PADDING FOR HOME */
+            }
+
             .class-grid,
             .fees-container,
             .notes-container,
@@ -1084,14 +1107,6 @@
                 font-size: 1.1rem;
             }
             
-            .section {
-                padding: 3rem 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
             .note-card, .class-card, .fee-card {
                 padding: 1.5rem;
             }
@@ -1110,8 +1125,19 @@
                 font-size: 1rem;
             }
             
+            .section {
+                padding: 3.5rem 0 2.5rem;
+                scroll-margin-top: calc(var(--nav-height) + 40px); /* FURTHER INCREASED FOR SMALL MOBILE */
+            }
+            
+            .section-title {
+                margin-bottom: 2rem;
+                padding-top: 1.5rem; /* EXTRA PADDING */
+            }
+            
             .section-title h2 {
                 font-size: 1.6rem;
+                padding-top: 0.8rem;
             }
 
             .cta-buttons {
@@ -1900,6 +1926,45 @@
             });
         });
 
+        // Enhanced smooth scrolling with offset for navbar
+        function smoothScrollToTarget(targetId) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Get navbar height
+                const navbarHeight = document.querySelector('nav').offsetHeight;
+                
+                // Calculate position
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = targetPosition - navbarHeight - 20; // Extra 20px padding
+                
+                // Scroll to position
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                return true;
+            }
+            return false;
+        }
+
+        // Handle nav link clicks with improved scrolling
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = item.getAttribute('href');
+                const pageId = item.getAttribute('data-page');
+                
+                // First show the page
+                showPage(pageId);
+                
+                // Then scroll to the section with offset
+                setTimeout(() => {
+                    smoothScrollToTarget(targetId);
+                }, 100);
+            });
+        });
+
         // Page Navigation
         function showPage(pageId) {
             // Hide all pages
@@ -1922,19 +1987,23 @@
                     item.classList.add('active');
                 }
             });
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Handle nav link clicks
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = item.getAttribute('data-page');
-                showPage(pageId);
-            });
-        });
+        // Handle direct hash links in URL
+        function handleHashLink() {
+            const hash = window.location.hash;
+            if (hash) {
+                const pageId = hash.substring(1);
+                const navItem = document.querySelector(`[data-page="${pageId}"]`);
+                if (navItem) {
+                    showPage(pageId);
+                    // Scroll after a short delay to ensure page is loaded
+                    setTimeout(() => {
+                        smoothScrollToTarget(hash);
+                    }, 300);
+                }
+            }
+        }
 
         // Back to Top Button
         window.addEventListener('scroll', () => {
@@ -2064,26 +2133,26 @@
                 description: "Higher secondary & competitive prep"
             },
             {
-title: "B.A",
-icon: "fas fa-university",
-features: ["Arts", "History", "Political Science", "Geography", "Sociology", "Psychology", "Urdu"],
-fee: "₹500/month",
-description: "Undergraduate Arts program. Builds foundation for higher studies and competitive exams."
-},
-{
-title: "M.A",
-icon: "fas fa-university",
-features: ["Advanced Arts", "History", "Political Science", "Geography", "Sociology", "Psychology", "Urdu"],
-fee: "₹700/month",
-description: "Postgraduate Arts program. Specialized study for advanced careers and research."
-},
-{
-title: "Entrance Exams",
-icon: "fas fa-door-open",
-features: ["DLED Entrance", "B.Ed Entrance", "Diploma Courses", "MANUU", "AMU", "JAMIA"],
-fee: "₹600/month",
-description: "Targeted preparation for entrance exams of top universities and diploma programs including MANUU, AMU, and Jamia Millia Islamia."
-}
+                title: "B.A",
+                icon: "fas fa-university",
+                features: ["Arts", "History", "Political Science", "Geography", "Sociology", "Psychology", "Urdu"],
+                fee: "₹500/month",
+                description: "Undergraduate Arts program. Builds foundation for higher studies and competitive exams."
+            },
+            {
+                title: "M.A",
+                icon: "fas fa-university",
+                features: ["Advanced Arts", "History", "Political Science", "Geography", "Sociology", "Psychology", "Urdu"],
+                fee: "₹700/month",
+                description: "Postgraduate Arts program. Specialized study for advanced careers and research."
+            },
+            {
+                title: "Entrance Exams",
+                icon: "fas fa-door-open",
+                features: ["DLED Entrance", "B.Ed Entrance", "Diploma Courses", "MANUU", "AMU", "JAMIA"],
+                fee: "₹600/month",
+                description: "Targeted preparation for entrance exams of top universities and diploma programs including MANUU, AMU, and Jamia Millia Islamia."
+            }
         ];
 
         // Populate class cards
@@ -2189,16 +2258,21 @@ description: "Targeted preparation for entrance exams of top universities and di
         }
 
         // Handle hash changes for direct page access
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.substring(1);
-            if (hash) {
-                showPage(hash);
-            }
-        });
+        window.addEventListener('hashchange', handleHashLink);
 
         // Initial page load
-        const initialHash = window.location.hash.substring(1) || 'home';
-        showPage(initialHash);
+        const initialHash = window.location.hash;
+        if (initialHash) {
+            const pageId = initialHash.substring(1);
+            showPage(pageId);
+            
+            // Scroll to section after page loads
+            setTimeout(() => {
+                smoothScrollToTarget(initialHash);
+            }, 500);
+        } else {
+            showPage('home');
+        }
         
         // Prevent horizontal scroll on mobile
         document.addEventListener('touchmove', function(e) {
@@ -2213,11 +2287,41 @@ description: "Targeted preparation for entrance exams of top universities and di
             navLinks.classList.remove('active');
             mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             document.body.style.overflow = 'auto';
+            
+            // Re-calculate scroll positions
+            setTimeout(handleHashLink, 300);
         });
         
-        // Debug: Log menu state changes
-        console.log("Mobile menu button found:", !!mobileMenuBtn);
-        console.log("Nav links found:", !!navLinks);
+        // Fix for mobile view - ensure content doesn't hide behind navbar
+        window.addEventListener('resize', function() {
+            // Update scroll-margin-top for all sections
+            document.querySelectorAll('.section').forEach(section => {
+                const navbarHeight = document.querySelector('nav').offsetHeight;
+                section.style.scrollMarginTop = `${navbarHeight + 20}px`;
+            });
+            
+            // Update home section padding
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                const navbarHeight = document.querySelector('nav').offsetHeight;
+                homeSection.style.paddingTop = `${navbarHeight + 30}px`;
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            // Set initial scroll-margin-top
+            const navbarHeight = document.querySelector('nav').offsetHeight;
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.scrollMarginTop = `${navbarHeight + 20}px`;
+            });
+            
+            // Set home section padding
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                homeSection.style.paddingTop = `${navbarHeight + 30}px`;
+            }
+        });
     </script>
 </body>
 </html>
