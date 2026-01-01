@@ -20,7 +20,7 @@
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
             --border-radius: 10px;
-            --nav-height: 80px;
+            --nav-height: 70px;
         }
 
         * {
@@ -130,7 +130,7 @@
             transform: translateY(-3px);
         }
 
-        /* NAVIGATION */
+        /* NAVIGATION - FIXED FOR MOBILE */
         nav {
             position: fixed;
             top: 0;
@@ -149,15 +149,15 @@
             align-items: center;
             height: 100%;
             width: 100%;
-            max-width: 1200px;
+            max-width: 100%;
+            padding: 0 20px;
             margin: 0 auto;
-            padding: 0 15px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--primary);
             white-space: nowrap;
@@ -165,13 +165,15 @@
         }
 
         .logo i {
-            margin-right: 10px;
+            margin-right: 8px;
             color: var(--secondary);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links li {
@@ -186,6 +188,7 @@
             position: relative;
             padding: 5px 0;
             white-space: nowrap;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover, 
@@ -212,7 +215,6 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 1rem;
             z-index: 1002;
         }
 
@@ -224,6 +226,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             z-index: 1002;
+            padding: 5px;
         }
 
         /* UPDATED HERO SECTION - IMPROVED DESIGN */
@@ -845,12 +848,6 @@
             gap: 4rem;
         }
 
-        @media (max-width: 768px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .contact-card {
             background-color: var(--light);
             padding: 2rem;
@@ -925,50 +922,118 @@
             gap: 3rem;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
+        /* RESPONSIVE DESIGN - FIXED FOR MOBILE */
+        @media (max-width: 1200px) {
+            .nav-links li {
+                margin-left: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
+            
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
 
+        @media (max-width: 768px) {
+            :root {
+                --nav-height: 60px;
+            }
+            
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                font-size: 1.3rem;
+            }
+            
             .nav-links {
                 position: fixed;
                 top: var(--nav-height);
-                left: -100%;
+                left: 0;
                 width: 100%;
                 height: calc(100vh - var(--nav-height));
                 background-color: var(--card-bg);
                 flex-direction: column;
                 align-items: center;
+                justify-content: flex-start;
                 padding-top: 2rem;
-                transition: left 0.3s ease;
+                transition: all 0.3s ease;
+                transform: translateX(-100%);
+                opacity: 0;
+                visibility: hidden;
                 z-index: 999;
                 overflow-y: auto;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             }
 
             .nav-links.active {
-                left: 0;
+                display: flex;
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
             }
 
             .nav-links li {
-                margin: 1.5rem 0;
+                margin: 0.8rem 0;
                 width: 100%;
                 text-align: center;
             }
 
             .nav-links a {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 display: block;
-                padding: 1rem 0;
+                padding: 0.8rem 0;
                 width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            
+            .nav-links li:last-child a {
+                border-bottom: none;
+            }
+
+            .nav-links a::after {
+                display: none;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
+                padding: 0 10px;
             }
 
             .class-grid,
@@ -984,44 +1049,157 @@
 
             .achievement-card {
                 min-width: 150px;
-                padding: 2rem 1rem;
+                padding: 1.5rem 1rem;
+                flex: 1 0 150px;
             }
 
             .achievement-card .number {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
                 font-size: 2.2rem;
             }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .section {
-                padding: 3rem 0;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
+            
             .achievement-cards {
-                gap: 1.5rem;
+                gap: 1rem;
+                padding: 0 10px;
             }
-
+            
+            .timetable-card {
+                padding: 1.5rem;
+            }
+            
             .day-header {
                 flex-direction: column;
                 gap: 1rem;
                 text-align: center;
             }
-
+            
+            .day-name {
+                font-size: 1.5rem;
+            }
+            
             .time-slot {
                 padding: 1.5rem;
+            }
+            
+            .slot-time {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .note-card, .class-card, .fee-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 0 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+
+            .achievement-cards {
+                gap: 0.8rem;
+            }
+            
+            .achievement-card {
+                min-width: 130px;
+                padding: 1.2rem 0.8rem;
+                flex: 1 0 130px;
+            }
+            
+            .achievement-card .number {
+                font-size: 1.8rem;
+            }
+            
+            .achievement-card p {
+                font-size: 0.9rem;
+            }
+            
+            .student-card {
+                flex: 0 0 250px;
+                padding: 1.5rem;
+            }
+            
+            .notes-container {
+                gap: 1.5rem;
+            }
+            
+            .note-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-about {
+                grid-column: 1;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .nav-container {
+                padding: 0 10px;
+            }
+            
+            .logo {
+                font-size: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+            
+            .achievement-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .achievement-card {
+                width: 100%;
+                max-width: 250px;
             }
         }
 
@@ -1062,11 +1240,12 @@
 
         .splash-logo {
             color: white;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 2rem;
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 0 20px;
         }
 
         .splash-spinner {
@@ -1120,12 +1299,12 @@
         <div class="splash-spinner"></div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation - FIXED FOR MOBILE -->
     <nav>
-        <div class="container nav-container">
+        <div class="nav-container">
             <div class="logo">
                 <i class="fas fa-graduation-cap"></i>
-                Mithila Coaching
+                <span class="logo-text">Mithila Coaching</span>
             </div>
             
             <ul class="nav-links">
@@ -1681,19 +1860,43 @@
             document.body.style.overflow = 'auto';
         }, 2000);
 
-        // Mobile Menu Toggle
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+        // Mobile Menu Toggle - FIXED VERSION
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = navLinks.classList.contains('active');
+            
+            if (isActive) {
+                // Close menu
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = 'auto';
+            } else {
+                // Open menu
+                navLinks.classList.add('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const isMobileMenuOpen = navLinks.classList.contains('active');
+            const isClickOnMenuBtn = mobileMenuBtn.contains(e.target);
+            const isClickOnNavLinks = navLinks.contains(e.target);
+            
+            if (isMobileMenuOpen && !isClickOnMenuBtn && !isClickOnNavLinks) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = 'auto';
+            }
         });
 
         // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
+        navItems.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = 'auto';
             });
         });
 
@@ -1996,6 +2199,25 @@ description: "Targeted preparation for entrance exams of top universities and di
         // Initial page load
         const initialHash = window.location.hash.substring(1) || 'home';
         showPage(initialHash);
+        
+        // Prevent horizontal scroll on mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            // Close mobile menu on orientation change
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Debug: Log menu state changes
+        console.log("Mobile menu button found:", !!mobileMenuBtn);
+        console.log("Nav links found:", !!navLinks);
     </script>
 </body>
 </html>
